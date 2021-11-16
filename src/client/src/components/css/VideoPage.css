@@ -1,0 +1,15 @@
+.site-layout-content{
+    display: flex !important;
+    flex-direction: column;
+
+}
+
+#video-container{
+    margin: 50px auto;
+}
+
+#titlebar{
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 0 ;
+}
