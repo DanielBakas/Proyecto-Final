@@ -19,7 +19,7 @@ import HomePage from "../pages/HomePage"
 import LoginPage from "../pages/LoginPage"
 import NotFoundPage from "../pages/NotFoundPage"
 import ProfilePage from "../pages/ProfilePage"
-import VideoPage from "../pages/ProfilePage"
+import VideoPage from "../pages/VideoPage"
 
 // Importar Paquetes
 import { Route, BrowserRouter as ReactRouter, Switch } from "react-router-dom"
