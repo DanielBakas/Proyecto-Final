@@ -15,12 +15,11 @@ Noviembre 14, 2021
 */
 
 // Importar Componentes
-import Page from './Page';
+import LoginForm from '../componentes/LoginForm';
+
+// Importar CSS
+import '../css/LoginForm.css';
 
 export default function LoginPage() {
-    return (
-        <Page id="LoginPage" selectedKey={3}>
-            <h1 align="center">Login</h1>
-        </Page>
-    )
+    return <LoginForm />
 }

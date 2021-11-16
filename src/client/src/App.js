@@ -19,7 +19,7 @@ import Router from "./components/routers/Router"
 
 export default function App() {
   return (
-    <div id="App" className="App">
+    <div id="App">
       <Router />
     </div>
   )

@@ -1,0 +1,23 @@
+#login {
+    background-color: #f0f2f5;
+    height: 100%;
+    display: grid;
+ }
+ 
+ #root{
+    margin:auto;
+ }
+ 
+ #sign-in-button{
+    margin-top: 5vh;
+ }
+ 
+ #main-card{
+    max-width: 458px;
+    padding: 7vh 5vw 3vh;
+ }
+ 
+ #card-image{
+    width: 200px;
+    margin-bottom: 3vh;
+ }

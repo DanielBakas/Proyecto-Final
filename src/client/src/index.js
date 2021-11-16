@@ -15,7 +15,7 @@ Noviembre 14, 2021
 */
 
 // Importar CSS
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.css'
 
 // Importar Componentes
 import App from './App'

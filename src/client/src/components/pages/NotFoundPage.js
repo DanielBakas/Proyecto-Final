@@ -15,7 +15,7 @@ Noviembre 14, 2021
 */
 
 // Importar Componentes
-import Page from './Page';
+import Page from './Page'
 
 export default function NotFoundPage() {
     return (
