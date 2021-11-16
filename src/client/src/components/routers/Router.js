@@ -18,7 +18,8 @@ Noviembre 14, 2021
 import HomePage from "../pages/HomePage"
 import LoginPage from "../pages/LoginPage"
 import NotFoundPage from "../pages/NotFoundPage"
-import VideosPage from "../pages/VideosPage"
+import ProfilePage from "../pages/ProfilePage"
+import VideoPage from "../pages/ProfilePage"
 
 // Importar Paquetes
 import { Route, BrowserRouter as ReactRouter, Switch } from "react-router-dom"
@@ -30,7 +31,8 @@ export default function Router() {
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route path='/login' component={LoginPage} />
-                    <Route path='/videos' component={VideosPage} />
+                    <Route path='/perfil' component={ProfilePage} />
+                    <Route path='/video' component={VideoPage} />
                     <Route path='*' component={NotFoundPage} status={404} />
                 </Switch>
             </ReactRouter>

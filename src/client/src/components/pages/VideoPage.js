@@ -1,7 +1,7 @@
 /*
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-Rutas
-Paquete | `rutas.js`
+Página de Inicio
+Módulo | `HomePage.js`
 
 {TODO: Descripción}
 
@@ -14,7 +14,13 @@ Noviembre 14, 2021
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-// Importar Módulos
-exports.listas = require("./listas")
-exports.usuarios = require("./usuarios")
-exports.videos = require("./videos")
+// Importar Componentes
+import Page from './Page'
+
+export default function VideoPage() {
+    return (
+        <Page id="VideoPage" selectedKey={2}>
+            <h1 align="center">Video</h1>
+        </Page>
+    )
+}

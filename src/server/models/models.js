@@ -15,5 +15,6 @@ Noviembre 14, 2021
 */
 
 // Importar Módulos
+exports.Lista = require("./lista")
 exports.Usuario = require("./usuario")
 exports.Video = require("./video")

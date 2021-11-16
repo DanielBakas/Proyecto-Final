@@ -1,7 +1,7 @@
 /*
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-Rutas
-Paquete | `rutas.js`
+Modelo de Usuario
+Módulo | `usuario.js`
 
 {TODO: Descripción}
 
@@ -14,7 +14,13 @@ Noviembre 14, 2021
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-// Importar Módulos
-exports.listas = require("./listas")
-exports.usuarios = require("./usuarios")
-exports.videos = require("./videos")
+
+// Imports
+const mongoose = require('mongoose')
+
+const Lista = mongoose.Schema({
+    nombre: { type: String, required: true },
+    videos: { type: Object, required: true }
+})
+
+module.exports = mongoose.model("Lista", Lista)

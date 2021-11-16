@@ -1,7 +1,7 @@
 /*
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
-Página de Not Found
-Módulo | `NotFoundPage.js`
+Página de Inicio
+Módulo | `HomePage.js`
 
 {TODO: Descripción}
 
@@ -17,10 +17,11 @@ Noviembre 14, 2021
 // Importar Componentes
 import Page from './Page'
 
-export default function Videos() {
+export default function ProfilePage() {
+    var usuario = JSON.parse(localStorage.getItem('usuario'))
     return (
-        <Page id="VideosPage" selectedKey={2}>
-            <h1 align="center">Videos</h1>
+        <Page id="ProfilePage" selectedKey={3}>
+            <h1 align="center">{usuario.nombre}</h1>
         </Page>
     )
 }

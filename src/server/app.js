@@ -20,7 +20,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 // Importar Módulos
-const { usuarios, videos } = require("./routes/rutas")
+const { listas, usuarios, videos } = require("./routes/rutas")
 
 // Configuración de dotenv
 dotenv.config()
@@ -36,6 +36,7 @@ const uri = process.env.MONGODB_URI
 
 // Middlewares
 app.use(express.json())
+app.use('/api/listas', listas)
 app.use('/api/usuarios', usuarios)
 app.use('/api/videos', videos)
 

@@ -44,7 +44,7 @@ export default class Page extends Component {
                                     <Link to="/">Inicio</Link>
                                 </Menu.Item>
                                 <Menu.Item key={2}>
-                                    <Link to="/videos">Videos</Link>
+                                    <Link to="/video">Video</Link>
                                 </Menu.Item>
                                 <Menu.Item key={3}><Link to="/perfil">{usuario.nombre}</Link></Menu.Item>
                             </Menu>

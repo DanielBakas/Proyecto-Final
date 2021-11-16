@@ -18,11 +18,11 @@ Noviembre 14, 2021
 const express = require('express')
 
 // Importar Módulos
-const { Caca } = require('../models/models')
+const { Lista } = require('../models/models')
 
 const router = express.Router()
 
-const Objeto = Usuario
+const Objeto = Lista
 
 router.get('/', (req, res) => {
     Objeto.find()
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const objeto = Usuario(req.body)
+    const objeto = Objeto(req.body)
     objeto.save()
         .then(data => res.json(data))
         .catch(error => res.json(error))
@@ -53,13 +53,13 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const { id } = req.params
-    const { email, nombre, password } = req.body
-    const nuevosDatos = { $set: { email, nombre, password } }
+    const { nombre, videos } = req.body
+    const nuevosDatos = { $set: { nombre, videos } }
     Objeto.updateOne({ _id: id }, nuevosDatos)
         .then(data => res.json(data))
         .catch(error => res.json(error))
 })
 
-const usuarios = router
+const listas = router
 
-module.exports = usuarios
+module.exports = listas

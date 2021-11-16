@@ -27,7 +27,7 @@ const axios = require('axios')
 export default class LoginForm extends Component {
     async login() {
         try {
-            var {user, password} = await axios.get("localhost:5000/api/usuarios:id")
+            var { user, password } = await axios.get()
         } catch (err) {
 
         }
