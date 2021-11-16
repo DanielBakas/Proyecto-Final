@@ -24,15 +24,23 @@ import { Link } from 'react-router-dom';
 export default class HomePage extends Component {
     render() {
         const listData = [];
-        const video = { id: "isaodfhpoisdhfp", nombre: "Hola", url: "https://i.ytimg.com/vi/CnJ57LkkriE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD4ePxAQyMb3npuUZepXTLNZL4PGQ" }
+        const video = {
+            _id: "619359341b2f352797554cf1",
+            titulo: "Video",
+            subtitulo: "día mes. año",
+            descripcion: "Descripcion",
+            thumbnail: "https://i.ytimg.com/vi/CnJ57LkkriE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD4ePxAQyMb3npuUZepXTLNZL4PGQ",
+            url: "https://www.youtube.com/watch?v=aC37UE7edP0"
+        }
         for (let i = 0; i < 23; i++) {
             listData.push({
-                avatar: 'https://joeschmoe.io/api/v1/random',
-                href: `/video/${video.id}`,
-                url: `${video.url}`,
-                title: `Curso ${i + 1}`,
-                description: 'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-                content: 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+                id: `${video._id}`,
+                avatar: `${process.env.PUBLIC_URL + 'images/logo.png'}`,
+                href: `/video/${video._id}`,
+                titulo: `${video.titulo}`,
+                subtitulo: `${video.subtitulo}`,
+                descripcion: `${video.descripcion}`,
+                url: `${video.url}`
             });
         }
         const IconText = ({ icon, text }) => (
@@ -51,9 +59,9 @@ export default class HomePage extends Component {
                     }}
                     footer={<div><b>Footer</b> Section</div>}
                     renderItem={item => (
-                        <List.Item key={item.title} extra={<img height={100} alt="logo" src={item.url} />}>
-                            <List.Item.Meta avatar={<Avatar src={item.avatar} />} title={<Link to={item.href}>{item.title}</Link>} description={item.description} />
-                            {item.content}
+                        <List.Item key={item.id} extra={<img height={100} alt="logo" src={item.url} />}>
+                            <List.Item.Meta avatar={<Avatar src={item.avatar} />} title={<Link to={item.href}>{item.titulo}</Link>} description={item.subtitulo} />
+                            {item.descripcion}
                         </List.Item>
                     )}
                 />
