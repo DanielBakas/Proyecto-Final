@@ -21,22 +21,43 @@ import React, { Component } from 'react';
 import Page from './Page'
 import { Link } from 'react-router-dom';
 
+// Importar Paquetes
+import axios from 'axios';
+
 export default class HomePage extends Component {
-    getVideos() {
-        return [
-            {
-                _id: "619359341b2f352797554cf1",
-                titulo: "How to Get Started Learning Embedded Systems",
-                subtitulo: "134,712 vistas • 30 nov. 2019",
-                descripcion: "How to Get Started Learning Embedded Systems // I've been meaning to start making more embedded systems videos — that is, computer science videos oriented to things you don't normally think of as computers (toys, robots, machines, cars, appliances). I hope this video helps you take the first step.",
-                thumbnail: "https://i.ytimg.com/an_webp/aC37UE7edP0/mqdefault_6s.webp?du=3000&sqp=CLC7zYwG&rs=AOn4CLBIItGwiHAroo38HxVjyViJY0Rggg",
-                url: "https://www.youtube.com/watch?v=aC37UE7edP0&t=1s"
-            }
-        ] // Dado por una llamada de axios de getAll a /api/videos
+    state = {
+        videos:[]
+    }
+
+    componentDidMount() {
+          // TODO agarrar request de /api/videos
+           
+        let reqOptions = {
+            url: "http://localhost:5000/api/videos",
+            method: "GET",     
+        }
+           
+        axios.request(reqOptions).then(res => {
+            console.log(res.data)
+            const videos = res.data
+            this.setState({videos})
+        })
+
+
+        // return [
+        //     {
+        //         _id: "619359341b2f352797554cf1",
+        //         titulo: "How to Get Started Learning Embedded Systems",
+        //         subtitulo: "134,712 vistas • 30 nov. 2019",
+        //         descripcion: "How to Get Started Learning Embedded Systems // I've been meaning to start making more embedded systems videos — that is, computer science videos oriented to things you don't normally think of as computers (toys, robots, machines, cars, appliances). I hope this video helps you take the first step.",
+        //         thumbnail: "https://i.ytimg.com/an_webp/aC37UE7edP0/mqdefault_6s.webp?du=3000&sqp=CLC7zYwG&rs=AOn4CLBIItGwiHAroo38HxVjyViJY0Rggg",
+        //         url: "https://www.youtube.com/watch?v=aC37UE7edP0&t=1s"
+        //     }
+        // ] // Dado por una llamada de axios de getAll a /api/videos
     }
 
     render() {
-        const videos = this.getVideos()
+        const videos = this.state.videos
         const data = []
         for (let i = 0; i < videos.length; i++) {
             data.push({
