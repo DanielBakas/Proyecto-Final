@@ -49,8 +49,8 @@ export default class Page extends Component {
                                 <Menu.Item key={3}><Link to="/perfil">{usuario.nombre}</Link></Menu.Item>
                             </Menu>
                         </Header>
-                        <Content style={{ padding: '50px' }}>
-                            <div className="site-layout-content">
+                        <Content className="site-layout-content">
+                            <div>
                                 {this.props.children}
                             </div>
                         </Content>

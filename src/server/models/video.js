@@ -18,8 +18,10 @@ Noviembre 14, 2021
 const mongoose = require('mongoose')
 
 const Video = mongoose.Schema({
-    nombre: { type: String, required: true },
-    comentario: { type: String, required: false },
+    titulo: { type: String, required: true },
+    subtitulo: { type: String, required: false },
+    descripcion: { type: String, required: false },
+    thumbnail: { type: String, required: true },
     url: { type: String, required: true }
 })
 

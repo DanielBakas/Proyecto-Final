@@ -53,8 +53,8 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const { id } = req.params
-    const { nombre, comentario, url } = req.body
-    const nuevosDatos = { $set: { nombre, comentario, url } }
+    const { titulo, subtitulo, descripcion, thumbnail, url } = req.body
+    const nuevosDatos = { $set: { titulo, subtitulo, descripcion, thumbnail, url } }
     Objeto.updateOne({ _id: id }, nuevosDatos)
         .then(data => res.json(data))
         .catch(error => res.json(error))
