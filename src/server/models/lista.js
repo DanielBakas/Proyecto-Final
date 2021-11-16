@@ -20,7 +20,7 @@ const mongoose = require('mongoose')
 
 const Lista = mongoose.Schema({
     nombre: { type: String, required: true },
-    videos: { type: Object, required: true }
+    videos: { type: Array, required: true }
 })
 
 module.exports = mongoose.model("Lista", Lista)

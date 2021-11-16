@@ -22,25 +22,32 @@ import Page from './Page'
 import { Link } from 'react-router-dom';
 
 export default class HomePage extends Component {
+    getVideos() {
+        return [
+            {
+                _id: "619359341b2f352797554cf1",
+                titulo: "How to Get Started Learning Embedded Systems",
+                subtitulo: "134,712 vistas • 30 nov. 2019",
+                descripcion: "How to Get Started Learning Embedded Systems // I've been meaning to start making more embedded systems videos — that is, computer science videos oriented to things you don't normally think of as computers (toys, robots, machines, cars, appliances). I hope this video helps you take the first step.",
+                thumbnail: "https://i.ytimg.com/an_webp/aC37UE7edP0/mqdefault_6s.webp?du=3000&sqp=CLC7zYwG&rs=AOn4CLBIItGwiHAroo38HxVjyViJY0Rggg",
+                url: "https://www.youtube.com/watch?v=aC37UE7edP0&t=1s"
+            }
+        ] // Dado por una llamada de axios de getAll a /api/videos
+    }
+
     render() {
-        const listData = [];
-        const video = {
-            _id: "619359341b2f352797554cf1",
-            titulo: "Video",
-            subtitulo: "día mes. año",
-            descripcion: "Descripcion",
-            thumbnail: "https://i.ytimg.com/vi/CnJ57LkkriE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD4ePxAQyMb3npuUZepXTLNZL4PGQ",
-            url: "https://www.youtube.com/watch?v=aC37UE7edP0"
-        }
-        for (let i = 0; i < 23; i++) {
-            listData.push({
-                id: `${video._id}`,
+        const videos = this.getVideos()
+        const data = []
+        for (let i = 0; i < videos.length; i++) {
+            data.push({
+                _id: videos[i]._id,
                 avatar: `${process.env.PUBLIC_URL + 'images/logo.png'}`,
-                href: `/video/${video._id}`,
-                titulo: `${video.titulo}`,
-                subtitulo: `${video.subtitulo}`,
-                descripcion: `${video.descripcion}`,
-                url: `${video.url}`
+                href: `/video/${videos[i]._id}`,
+                titulo: videos[i].titulo,
+                subtitulo: videos[i].subtitulo,
+                descripcion: videos[i].descripcion,
+                thumbnail: videos[i].thumbnail,
+                url: videos[i].url
             });
         }
         const IconText = ({ icon, text }) => (
@@ -52,14 +59,13 @@ export default class HomePage extends Component {
         return (
             <Page id="HomePage" selectedKey={1}>
                 <h1>Cursos</h1>
-                <List dataSource={listData} itemLayout="vertical" size="large"
+                <List dataSource={data} itemLayout="vertical" size="large"
                     pagination={{
                         onChange: page => { console.log(page) },
                         pageSize: 10,
                     }}
-                    footer={<div><b>Footer</b> Section</div>}
                     renderItem={item => (
-                        <List.Item key={item.id} extra={<img height={100} alt="logo" src={item.url} />}>
+                        <List.Item key={item._id} extra={<img height={100} alt="logo" src={item.thumbnail} />}>
                             <List.Item.Meta avatar={<Avatar src={item.avatar} />} title={<Link to={item.href}>{item.titulo}</Link>} description={item.subtitulo} />
                             {item.descripcion}
                         </List.Item>

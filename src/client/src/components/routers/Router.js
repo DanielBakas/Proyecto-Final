@@ -32,7 +32,7 @@ export default function Router() {
                     <Route exact path='/' component={HomePage} />
                     <Route path='/login' component={LoginPage} />
                     <Route path='/perfil' component={ProfilePage} />
-                    <Route path='/video' component={VideoPage} />
+                    <Route path='/video/:id' component={VideoPage} />
                     <Route path='*' component={NotFoundPage} status={404} />
                 </Switch>
             </ReactRouter>
