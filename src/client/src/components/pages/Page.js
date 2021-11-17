@@ -21,7 +21,7 @@ import LoginPage from './LoginPage'
 import "../css/Page.css"
 
 // Importar Componentes de Ant Design
-import { Button, Layout, Menu } from 'antd'
+import { Button, Image, Layout, Menu } from 'antd'
 import { Component } from "react"
 import { Link } from "react-router-dom"
 
@@ -40,17 +40,17 @@ export default class Page extends Component {
                 <div id={this.props.id} >
                     <Layout className="layout">
                         <Header>
-                            <div className="logo" />
                             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[`${this.props.selectedKey}`]}>
                                 <Menu.Item key={1}>
-                                    <Link to="/">Inicio</Link>
+                                    <Link to="/">
+                                        <Image preview={false} style={{ margin: "10px" }} height="30px" src='/images/logo.png'></Image>
+                                    </Link>
                                 </Menu.Item>
-                                <Menu.Item key={2}>
-                                    <Link to="/video">Video</Link>
-                                </Menu.Item>
-                                <Menu.Item key={3}><Link to="/perfil">{usuario.nombre}</Link></Menu.Item>
-                                <Menu.Item key={4}>
-                                    <Link onClick={() => localStorage.removeItem("usuario")} to="/">Logout</Link>
+                                <Menu.Item key={2}><Link to="/perfil">{usuario.nombre}</Link></Menu.Item>
+                                <Menu.Item key={3}>
+                                    <Button ghost type="secondary" danger>
+                                        <Link onClick={() => localStorage.removeItem("usuario")} to="/">Salir</Link>
+                                    </Button>
                                 </Menu.Item>
                             </Menu>
                         </Header>
@@ -59,7 +59,7 @@ export default class Page extends Component {
                                 {this.props.children}
                             </div>
                         </Content>
-                        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                        <Footer style={{ textAlign: 'center' }}>KPMG © 2021 | Desarrollado por Estudiantes del Tecnológico de Monterrey CCM</Footer>
                     </Layout>
                 </div >
             )

@@ -52,26 +52,15 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/auth/check', (req, res) => {
-    console.log("req")
-    console.log(req.body)
-
     const objeto = Objeto(req.body)
-
-    //const validar = {}
     Objeto.findOne({ email: objeto.email })
         .then(data => {
-            if(data===null){
-                res.status(404).send(new Error("password error"))
-            }
-            if (data.password === objeto.password) {
-                console.log("axios")
-                console.log(data)
+            if (data === null)
+                res.send()
+            else if (data.password === objeto.password)
                 res.json(data)
-            } else
-                res.status(404).send(new Error("password error"))
-            // data.password === objeto.password ? res.json(data) : res.status(404).send(new Error("password error"))
         })
-        .catch(error => res.json(error))
+        .catch(error => console.log("Authentication Error"))
 })
 
 router.put('/:id', (req, res) => {

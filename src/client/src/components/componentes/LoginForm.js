@@ -20,7 +20,6 @@ import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icon
 import Title from 'antd/es/typography/Title';
 import Text from 'antd/es/typography/Text';
 import { Component } from 'react';
-// import { Link, Redirect } from "react-router-dom"
 
 // Importar Paquetes
 const axios = require("axios").default;
@@ -31,29 +30,15 @@ export default class LoginForm extends Component {
         const correo = document.getElementById('input-email').value
         const contrasena = document.getElementById('input-password').value
 
-        const usuario={
-            email: correo,
-            password: contrasena
-        }
-
-        console.log(usuario)
-
-        // const usuario = {
-        //     email: "example@gmail.com",
-        //     password: "password"
-        // }
-        
+        const usuario = { email: correo, password: contrasena }
         axios.post("http://localhost:5000/api/usuarios/auth/check", usuario)
             .then(res => {
-                console.log(res)
-                localStorage.setItem("usuario", JSON.stringify(res.data))
-                this.props.handler.refreshPage()                
+                if (res.data !== "") {
+                    localStorage.setItem("usuario", JSON.stringify(res.data))
+                    this.props.handler.refreshPage()
+                } else
+                    console.log("Error en la Autenticación")
             })
-        
-            // Comparar email y password para encontrar si el usuario existe
-        // Si el usuario existe se almacena en la sesión
-        
-        
     }
 
     render() {
