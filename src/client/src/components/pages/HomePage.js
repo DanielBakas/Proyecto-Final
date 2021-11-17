@@ -16,7 +16,6 @@ Noviembre 14, 2021
 
 // Importar Componentes
 import { Avatar, List, Space } from 'antd';
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
 import React, { Component } from 'react';
 import Page from './Page'
 import { Link } from 'react-router-dom';

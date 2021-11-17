@@ -20,7 +20,7 @@ import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icon
 import Title from 'antd/es/typography/Title';
 import Text from 'antd/es/typography/Text';
 import { Component } from 'react';
-import { Link, Redirect } from "react-router-dom"
+// import { Link, Redirect } from "react-router-dom"
 
 // Importar Paquetes
 const axios = require("axios").default;
@@ -28,15 +28,32 @@ const axios = require("axios").default;
 
 export default class LoginForm extends Component {
     getData() {
-        const usuario = {
-            email: "example@gmail.com",
-            password: "password"
+        const correo = document.getElementById('input-email').value
+        const contrasena = document.getElementById('input-password').value
+
+        const usuario={
+            email: correo,
+            password: contrasena
         }
+
+        console.log(usuario)
+
+        // const usuario = {
+        //     email: "example@gmail.com",
+        //     password: "password"
+        // }
+        
         axios.post("http://localhost:5000/api/usuarios/auth/check", usuario)
-            .then(res => localStorage.setItem("usuario", JSON.stringify(res.data)))
-        // Comparar email y password para encontrar si el usuario existe
+            .then(res => {
+                console.log(res)
+                localStorage.setItem("usuario", JSON.stringify(res.data))
+                this.props.handler.refreshPage()                
+            })
+        
+            // Comparar email y password para encontrar si el usuario existe
         // Si el usuario existe se almacena en la sesión
-        this.props.handler.refreshPage()
+        
+        
     }
 
     render() {
@@ -47,9 +64,9 @@ export default class LoginForm extends Component {
                         <img id="card-image" src={process.env.PUBLIC_URL + 'images/logo.png'} alt="logo" />
                         <Title level={3} align="center">Login</Title>
                         <Text id="email" type="secondary" align="baseline">Email</Text>
-                        <Input size="large" prefix={<UserOutlined />} />
+                        <Input id="input-email" size="large" prefix={<UserOutlined />} />
                         <Text id="password" type="secondary">Password</Text>
-                        <Input.Password size="large" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
+                        <Input.Password id="input-password" size="large" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                         <Button onClick={() => this.getData()} type="primary" size="large" align="center" id="sign-in-button">
                             Sign In
                         </Button>

@@ -60,6 +60,9 @@ router.post('/auth/check', (req, res) => {
     //const validar = {}
     Objeto.findOne({ email: objeto.email })
         .then(data => {
+            if(data===null){
+                res.status(404).send(new Error("password error"))
+            }
             if (data.password === objeto.password) {
                 console.log("axios")
                 console.log(data)

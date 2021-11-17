@@ -21,7 +21,8 @@ export default function ProfilePage() {
     var usuario = JSON.parse(localStorage.getItem('usuario'))
     return (
         <Page id="ProfilePage" selectedKey={3}>
-            <h1 align="center">{usuario.nombre}</h1>
+            <h1 align="center">Nombre del usuario: {usuario.nombre}</h1>
+            <h2 align="center">Correo del usuario: {usuario.email}</h2>
         </Page>
     )
 }

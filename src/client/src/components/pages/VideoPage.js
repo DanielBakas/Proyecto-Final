@@ -57,15 +57,18 @@ export default class VideoPage extends Component {
         //console.log(this.props.params.id)
         return (
             <Page id="VideoPage" selectedKey={2}>
-                <Space id="video-container" direction="vertical">
-                    <iframe
-                        width="960" height="615"
-                        //src="https://www.youtube.com/embed/Q4MymPStabI"
-                        //src="https://www.youtube.com/embed/aC37UE7edP0"
-                        src={video.url}
-                        title="YouTube video player" frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen />
+                <Space id="video-container" direction="vertical" >
+                    <div className="container">
+                        <iframe className="responsive-iframe"
+                            // width="80%" height="45%"
+                            //src="https://www.youtube.com/embed/Q4MymPStabI"
+                            //src="https://www.youtube.com/embed/aC37UE7edP0"
+                            src={video.url}
+                            title="YouTube video player" frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen />
+                    </div>
+                    
                     <Space direction="horizontal" id='titlebar'>
                         <h1>{video.titulo}</h1>
                         <Radio.Group>
