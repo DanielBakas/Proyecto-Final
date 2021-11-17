@@ -51,6 +51,28 @@ router.get('/:id', (req, res) => {
         .catch(error => res.json(error))
 })
 
+router.get('/auth/check', (req, res) => {
+    const objeto = Objeto(req.body)
+    // res.json(req.body)
+
+    // console.log("axios")
+    // console.log(res);
+    
+    //const validar = {}
+    Objeto.findOne({email:objeto.email})
+         .then(data => {
+            data.password===objeto.password ?  res.json(data) : res.status(404).send(new Error("password error"))
+            // if(data.password===objeto.password){
+            //     // console.log("axios")
+            //     // console.log(data);
+            //     res.json(data)
+            // }
+        }
+        )
+         .catch(error => res.json(error))
+    
+})
+
 router.put('/:id', (req, res) => {
     const { id } = req.params
     const { email, nombre, password } = req.body
