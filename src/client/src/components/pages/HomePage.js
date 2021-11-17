@@ -26,21 +26,21 @@ import axios from 'axios';
 
 export default class HomePage extends Component {
     state = {
-        videos:[]
+        videos: []
     }
 
     componentDidMount() {
-          // TODO agarrar request de /api/videos
-           
+        // TODO agarrar request de /api/videos
+
         let reqOptions = {
             url: "http://localhost:5000/api/videos",
-            method: "GET",     
+            method: "GET",
         }
-           
+
         axios.request(reqOptions).then(res => {
             console.log(res.data)
             const videos = res.data
-            this.setState({videos})
+            this.setState({ videos })
         })
 
 

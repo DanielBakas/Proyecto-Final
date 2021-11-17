@@ -20,39 +20,23 @@ import { UserOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icon
 import Title from 'antd/es/typography/Title';
 import Text from 'antd/es/typography/Text';
 import { Component } from 'react';
+import { Link, Redirect } from "react-router-dom"
 
 // Importar Paquetes
-import axios from "axios";
+const axios = require("axios").default;
 
 
 export default class LoginForm extends Component {
-    state = {
-        email:"example@gmail.com",
-        password:"password"
-    }
-
     getData() {
-
-        const stater = this.state
-
-        let headersList = {
-            "Content-Type": "application/json" 
+        const usuario = {
+            email: "example@gmail.com",
+            password: "password"
         }
-        
-        let reqOptions = {
-            url: "http://localhost:5000/api/usuarios/auth/check",
-            method: "GET",
-            headers: headersList,
-            bodyu: stater
-        }
-
-        console.log("req")
-        console.log(reqOptions)
-           
-        axios.request(reqOptions)
-        
+        axios.post("http://localhost:5000/api/usuarios/auth/check", usuario)
+            .then(res => localStorage.setItem("usuario", JSON.stringify(res.data)))
         // Comparar email y password para encontrar si el usuario existe
         // Si el usuario existe se almacena en la sesión
+        this.props.handler.refreshPage()
     }
 
     render() {
@@ -66,7 +50,9 @@ export default class LoginForm extends Component {
                         <Input size="large" prefix={<UserOutlined />} />
                         <Text id="password" type="secondary">Password</Text>
                         <Input.Password size="large" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
-                        <Button onClick={()=>this.getData()} type="primary" size="large" align="center" id="sign-in-button">Sign In</Button>
+                        <Button onClick={() => this.getData()} type="primary" size="large" align="center" id="sign-in-button">
+                            Sign In
+                        </Button>
                     </Space>
                 </Card>
             </div>

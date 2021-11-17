@@ -21,17 +21,19 @@ import LoginPage from './LoginPage'
 import "../css/Page.css"
 
 // Importar Componentes de Ant Design
-import { Layout, Menu } from 'antd'
+import { Button, Layout, Menu } from 'antd'
 import { Component } from "react"
 import { Link } from "react-router-dom"
 
 const { Header, Content, Footer } = Layout
 
 export default class Page extends Component {
+    refreshPage() { setTimeout(() => { window.location.reload(false) }, 100) }
+
     render() {
         var usuario = localStorage.getItem('usuario')
         if (usuario === null)
-            return <LoginPage />
+            return <LoginPage handler={this} />
         else {
             usuario = JSON.parse(usuario)
             return (
@@ -47,6 +49,9 @@ export default class Page extends Component {
                                     <Link to="/video">Video</Link>
                                 </Menu.Item>
                                 <Menu.Item key={3}><Link to="/perfil">{usuario.nombre}</Link></Menu.Item>
+                                <Menu.Item key={4}>
+                                    <Link onClick={() => localStorage.removeItem("usuario")} to="/">Logout</Link>
+                                </Menu.Item>
                             </Menu>
                         </Header>
                         <Content className="site-layout-content">
@@ -56,7 +61,7 @@ export default class Page extends Component {
                         </Content>
                         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
                     </Layout>
-                </div>
+                </div >
             )
         }
     }

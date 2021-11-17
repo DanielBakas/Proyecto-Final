@@ -16,10 +16,13 @@ Noviembre 14, 2021
 
 // Importar Componentes
 import LoginForm from '../componentes/LoginForm';
+import { Component } from "react"
 
 // Importar CSS
 import '../css/LoginForm.css';
 
-export default function LoginPage() {
-    return <LoginForm />
+export default class LoginPage extends Component {
+    render() {
+        return <LoginForm handler={this.props.handler} />
+    }
 }
